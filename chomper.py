@@ -26,6 +26,8 @@ def main():
     mymouth.rect.topleft = (50, 50)
     mymouth.add(mouthGroup)
     mainsurface.blit(mymouth.image, mymouth.rect)
+    myfont = pygame.font.SysFont("Britannic Bold", 200)
+    nlabel = myfont.render("Game Over", 1, (0, 0, 0))
 
 
     while True:
@@ -50,6 +52,9 @@ def main():
             mainsurface.blit(myapple.image, myapple.rect)
 
         mymouth.collide(appleGroup)
+
+        if len(appleGroup) == 0:
+            mainsurface.blit(nlabel, (100, 400))
 
 
 

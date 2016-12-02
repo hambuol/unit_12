@@ -7,8 +7,8 @@ class Mouth(pygame.sprite.Sprite):
         self.image = pygame.image.load("mouth.jpg")
         self.rect = self.image.get_rect()
         self.screen = screen
-        self.speedx = 5
-        self.speedy = 5
+        self.speedx = 10
+        self.speedy = 10
         self.hit = pygame.mixer.Sound("chomp.wav")
     def up(self):
         self.rect.top -= self.speedy
