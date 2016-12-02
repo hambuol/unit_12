@@ -51,7 +51,8 @@ class Mouth(pygame.sprite.Sprite):
             self.speedy = self.speedy
 
     def collide(self, spriteGroup):
-        pygame.sprite.spritecollide(self, spriteGroup, True)
-        self.hit.play()
+        if pygame.sprite.spritecollide(self, spriteGroup, True):
+            self.hit.play()
+
 
 
