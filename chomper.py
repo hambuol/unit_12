@@ -4,17 +4,17 @@ import mouth
 from pygame.locals import *
 import random
 def main():
-    SCREEN_WIDTH = 500
-    SCREEN_HEIGHT = 500
+    SCREEN_WIDTH = 1000
+    SCREEN_HEIGHT = 900
     pygame.init()
     mainsurface = pygame.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT), 0, 32)
-    pygame.display.set_caption("chomper")
+    pygame.display.set_caption("Chomper")
     WHITE = (255,255,255)
 
     appleGroup = pygame.sprite.Group()
-    for x in range(10):
-        xpos = random.randint(0,450)
-        ypos = random.randint(0,450)
+    for x in range(15):
+        xpos = random.randint(0,950)
+        ypos = random.randint(0,850)
         myapple = apple.Apple(mainsurface)
         myapple.rect.topleft = (xpos, ypos)
         myapple.add(appleGroup)
@@ -26,7 +26,7 @@ def main():
     mymouth.rect.topleft = (50, 50)
     mymouth.add(mouthGroup)
     mainsurface.blit(mymouth.image, mymouth.rect)
-    hit = pygame.mixer.Sound("chomp.wav")
+
 
     while True:
         for event in pygame.event.get():
