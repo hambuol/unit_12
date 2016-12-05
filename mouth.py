@@ -1,6 +1,9 @@
+# imports pygame moduel
 import pygame
 
+
 class Mouth(pygame.sprite.Sprite):
+    """class sets what is needed for mouth"""
 
     def __init__(self, screen):
         super().__init__()
@@ -10,49 +13,52 @@ class Mouth(pygame.sprite.Sprite):
         self.speedx = 10
         self.speedy = 10
         self.hit = pygame.mixer.Sound("chomp.wav")
-    def up(self):
-        self.rect.top -= self.speedy
 
-        if self.rect.right > self.screen.get_width() or self.rect.left < 0:
-            self.speedx = self.speedx
-        if self.rect.top > self.screen.get_height() or self.rect.top < 0:
-            self.speedy = self.speedy
-        if self.rect.bottom > self.screen.get_height():
-            self.speedy = self.speedy
+    def up(self):
+        """
+        moves mouth up
+        :param: none
+        :return:none
+        """
+        if self.rect.top > 0:
+            self.rect.top -= self.speedy
 
     def down(self):
-        self.rect.top += self.speedy
+        """
+        moves mouth down
+        :param: none
+        :return: none
+        """
+        if self.rect.bottom < self.screen.get_height():
+            self.rect.bottom += self.speedy
 
-        if self.rect.right > self.screen.get_width() or self.rect.left < 0:
-            self.speedx = self.speedx
-        if self.rect.top > self.screen.get_height() or self.rect.top < 0:
-            self.speedy = self.speedy
-        if self.rect.bottom > self.screen.get_height():
-            self.speedy = self.speedy
+
 
     def left(self):
-        self.rect.left -= self.speedx
+        """
+        moves mouth left
+        :param: none
+        :return: none
+        """
+        if self.rect.left > 0:
+            self.rect.left -= self.speedx
 
-        if self.rect.right > self.screen.get_width() or self.rect.left < 0:
-            self.speedx = self.speedx
-        if self.rect.top > self.screen.get_height() or self.rect.top < 0:
-            self.speedy = self.speedy
-        if self.rect.bottom > self.screen.get_height():
-            self.speedy = self.speedy
 
     def right(self):
-        self.rect.left += self.speedx
+        """
+        moves mouth right
+        :param: none
+        :return: none
+        """
+        if self.rect.right < self.screen.get_width():
+            self.rect.left += self.speedx
 
-        if self.rect.right > self.screen.get_width() or self.rect.left < 0:
-            self.speedx = self.speedx
-        if self.rect.top > self.screen.get_height() or self.rect.top < 0:
-            self.speedy = self.speedy
-        if self.rect.bottom > self.screen.get_height():
-            self.speedy = self.speedy
 
     def collide(self, spriteGroup):
+        """
+        collie function deletes what the mouth is collided with and plays the sound
+        :param spriteGroup:
+        :return: none
+        """
         if pygame.sprite.spritecollide(self, spriteGroup, True):
             self.hit.play()
-
-
-

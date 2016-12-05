@@ -1,6 +1,9 @@
+# imports needed moduels
 import pygame
 
+
 class Apple(pygame.sprite.Sprite):
+    """class sets what is needed for the apples"""
 
     def __init__(self, screen):
         super().__init__()
